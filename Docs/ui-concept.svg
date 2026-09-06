@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<defs>
+  <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#073b90"/><stop offset=".55" stop-color="#087ed1"/><stop offset="1" stop-color="#11c997"/></linearGradient>
+  <linearGradient id="cta" x1="0" x2="1"><stop stop-color="#0967f2"/><stop offset="1" stop-color="#00c6a7"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-opacity=".14"/></filter>
+  <style>
+    .jp{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif}.h{font-weight:700;fill:#10274f}.s{fill:#66758d}.card{fill:#fff;stroke:#dfe8f2;stroke-width:2}.phone{fill:#f9fbff;stroke:#cdd9e7;stroke-width:4}.blue{fill:#0967f2}.teal{fill:#00bba4}
+  </style>
+</defs>
+<rect width="1600" height="1000" fill="#f4f8fc"/>
+<circle cx="1470" cy="55" r="260" fill="#d9fff3" opacity=".6"/><circle cx="80" cy="900" r="270" fill="#e2edff" opacity=".7"/>
+
+<!-- brand -->
+<g transform="translate(85,55)">
+  <rect width="92" height="92" rx="22" fill="url(#hero)"/>
+  <path d="M35 22h22l-3 20c-1 8 8 21 11 34 2 8-1 15-5 21-5 7-9 10-14 10s-9-3-14-10c-4-6-7-13-5-21 3-13 12-26 11-34z" fill="#effcff"/>
+  <ellipse cx="46" cy="61" rx="26" ry="9" fill="none" stroke="#55ffb6" stroke-width="6"/>
+  <path d="M60 43l17-16m0 0h-11m11 0v11" fill="none" stroke="#55ffb6" stroke-width="5" stroke-linecap="round"/>
+</g>
+<text x="200" y="92" class="jp h" font-size="42">わたしのカラダ</text>
+<text x="202" y="126" class="jp s" font-size="17" letter-spacing="5">SCAN · TRACK · PROGRESS</text>
+<text x="1100" y="89" class="jp h" font-size="30">スマホで、カラダをもっと身近に。</text>
+<text x="1102" y="123" class="jp s" font-size="17">LiDARで測る。端末内で残す。変化を3Dで見る。</text>
+
+<!-- phone 1 -->
+<g transform="translate(90,190)" filter="url(#shadow)">
+  <rect class="phone" width="320" height="650" rx="44"/>
+  <rect x="112" y="16" width="96" height="24" rx="12" fill="#1b2738"/>
+  <text x="28" y="78" class="jp s" font-size="15">ホーム</text>
+  <text x="28" y="116" class="jp h" font-size="25">今日も、いい調子です</text>
+  <rect x="22" y="145" width="276" height="170" rx="26" fill="#eaf5ff"/>
+  <text x="42" y="177" class="jp s" font-size="14">最新のウエスト</text>
+  <text x="40" y="235" class="jp h" font-size="45">82.4<tspan font-size="19"> cm</tspan></text>
+  <rect x="40" y="257" width="108" height="30" rx="15" fill="#d9fff1"/>
+  <text x="55" y="278" class="jp teal" font-size="14">前回 -1.8 cm</text>
+  <g transform="translate(175,170)"><path d="M38 0h38l-5 34c-2 16 15 42 20 64 4 18-5 32-18 43-9 8-27 8-36 0-13-11-22-25-18-43 5-22 22-48 20-64z" fill="#c8eaff"/><ellipse cx="55" cy="91" rx="45" ry="14" fill="none" stroke="#16d6a8" stroke-width="8"/></g>
+  <rect x="22" y="332" width="132" height="92" rx="20" class="card"/><rect x="166" y="332" width="132" height="92" rx="20" class="card"/>
+  <text x="38" y="359" class="jp s" font-size="13">体重</text><text x="38" y="393" class="jp h" font-size="24">72.1 kg</text>
+  <text x="182" y="359" class="jp s" font-size="13">記録</text><text x="182" y="393" class="jp h" font-size="24">12 回</text>
+  <text x="24" y="465" class="jp h" font-size="17">クイックアクション</text>
+  <rect x="22" y="485" width="276" height="64" rx="19" fill="url(#cta)"/><text x="95" y="525" class="jp" fill="#fff" font-size="19" font-weight="700">スキャン開始</text>
+  <rect x="22" y="568" width="82" height="55" rx="16" fill="#edf4ff"/><rect x="119" y="568" width="82" height="55" rx="16" fill="#e8fff7"/><rect x="216" y="568" width="82" height="55" rx="16" fill="#edf4ff"/>
+  <text x="39" y="600" class="jp blue" font-size="13">ホーム</text><text x="138" y="600" class="jp teal" font-size="13">記録</text><text x="233" y="600" class="jp blue" font-size="13">分析</text>
+</g>
+<text x="110" y="885" class="jp h" font-size="21">01 ホーム</text><text x="110" y="913" class="jp s" font-size="15">今日の変化をひと目で。</text>
+
+<!-- phone 2 scan -->
+<g transform="translate(465,190)" filter="url(#shadow)">
+  <rect class="phone" width="320" height="650" rx="44" fill="#101c32"/>
+  <rect x="112" y="16" width="96" height="24" rx="12" fill="#050912"/>
+  <text x="28" y="82" class="jp" fill="#fff" font-size="17">ボディスキャン</text>
+  <text x="28" y="124" class="jp" fill="#fff" font-weight="700" font-size="23">iPhoneを固定して</text><text x="28" y="154" class="jp" fill="#fff" font-weight="700" font-size="23">ゆっくり向きを変えます</text>
+  <rect x="54" y="183" width="212" height="310" rx="80" fill="none" stroke="#d9f8ff" stroke-width="2" stroke-dasharray="10 9"/>
+  <path d="M130 230h60l-8 65c-4 35 34 91 31 137-2 28-19 45-53 45s-51-17-53-45c-3-46 35-102 31-137z" fill="#8bb6d7" opacity=".45"/>
+  <ellipse cx="160" cy="354" rx="75" ry="23" fill="none" stroke="#35f0b4" stroke-width="8"/>
+  <rect x="78" y="438" width="164" height="42" rx="21" fill="#071224" opacity=".85"/><text x="102" y="465" class="jp" fill="#fff" font-size="15">右側を向いてください</text>
+  <rect x="22" y="515" width="276" height="16" rx="8" fill="#243550"/><rect x="22" y="515" width="150" height="16" rx="8" fill="#25d9ab"/>
+  <text x="24" y="561" class="jp" fill="#dceaff" font-size="14">2 / 4　　距離 2.0 m</text>
+  <text x="24" y="599" class="jp" fill="#b8c9db" font-size="13">🔊 音声ガイドに合わせて90°ずつ回転</text>
+</g>
+<text x="485" y="885" class="jp h" font-size="21">02 セルフスキャン</text><text x="485" y="913" class="jp s" font-size="15">ひとりで、4方向をLiDAR計測。</text>
+
+<!-- phone 3 result -->
+<g transform="translate(840,190)" filter="url(#shadow)">
+  <rect class="phone" width="320" height="650" rx="44"/>
+  <rect x="112" y="16" width="96" height="24" rx="12" fill="#1b2738"/>
+  <text x="28" y="80" class="jp s" font-size="15">スキャン結果</text><text x="28" y="118" class="jp h" font-size="25">変化が、見える。</text>
+  <rect x="22" y="143" width="276" height="265" rx="24" fill="#071f44"/>
+  <g opacity=".92">
+    <circle cx="160" cy="205" r="5" fill="#4df0c2"/><circle cx="137" cy="220" r="4" fill="#2bbef2"/><circle cx="181" cy="223" r="4" fill="#2bbef2"/>
+    <circle cx="126" cy="252" r="4" fill="#54e5a9"/><circle cx="194" cy="253" r="4" fill="#54e5a9"/><circle cx="141" cy="278" r="4" fill="#2bbef2"/><circle cx="179" cy="278" r="4" fill="#2bbef2"/>
+    <circle cx="132" cy="310" r="5" fill="#4df0c2"/><circle cx="188" cy="310" r="5" fill="#4df0c2"/><circle cx="144" cy="344" r="4" fill="#2bbef2"/><circle cx="177" cy="344" r="4" fill="#2bbef2"/>
+    <circle cx="150" cy="376" r="5" fill="#4df0c2"/><circle cx="170" cy="376" r="5" fill="#4df0c2"/>
+  </g>
+  <text x="192" y="382" class="jp" fill="#a9c7e5" font-size="11">On-device splats</text>
+  <rect x="22" y="426" width="132" height="92" rx="20" class="card"/><rect x="166" y="426" width="132" height="92" rx="20" class="card"/>
+  <text x="38" y="453" class="jp s" font-size="13">ウエスト</text><text x="38" y="488" class="jp h" font-size="24">82.4 cm</text>
+  <text x="182" y="453" class="jp s" font-size="13">お腹</text><text x="182" y="488" class="jp h" font-size="24">86.1 cm</text>
+  <rect x="22" y="533" width="276" height="70" rx="20" fill="#e9fff8"/><text x="40" y="561" class="jp teal" font-size="14">前回からウエスト -1.8 cm</text><text x="40" y="584" class="jp s" font-size="12">同じ撮影条件で比較すると変化を追いやすい</text>
+</g>
+<text x="860" y="885" class="jp h" font-size="21">03 結果・3D</text><text x="860" y="913" class="jp s" font-size="15">寸法はLiDAR、見た目はGaussian splats。</text>
+
+<!-- phone 4 analytics -->
+<g transform="translate(1215,190)" filter="url(#shadow)">
+  <rect class="phone" width="320" height="650" rx="44"/>
+  <rect x="112" y="16" width="96" height="24" rx="12" fill="#1b2738"/>
+  <text x="28" y="80" class="jp s" font-size="15">履歴・分析</text><text x="28" y="118" class="jp h" font-size="25">続けた分だけ、見える。</text>
+  <rect x="22" y="146" width="276" height="230" rx="24" class="card"/>
+  <text x="40" y="177" class="jp h" font-size="15">ウエストの変化</text>
+  <path d="M50 216L90 230L128 247L168 266L210 280L266 304" fill="none" stroke="#00bba4" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#00bba4"><circle cx="50" cy="216" r="6"/><circle cx="90" cy="230" r="6"/><circle cx="128" cy="247" r="6"/><circle cx="168" cy="266" r="6"/><circle cx="210" cy="280" r="6"/><circle cx="266" cy="304" r="6"/></g>
+  <text x="42" y="346" class="jp s" font-size="12">8/02　　 8/09　　 8/16　　 8/23　　 9/06</text>
+  <text x="24" y="418" class="jp h" font-size="17">記録一覧</text>
+  <g class="jp"><rect x="22" y="436" width="276" height="68" rx="17" class="card"/><text x="40" y="463" class="h" font-size="14">9月6日</text><text x="40" y="486" class="s" font-size="13">82.4 cm　72.1 kg</text>
+  <rect x="22" y="516" width="276" height="68" rx="17" class="card"/><text x="40" y="543" class="h" font-size="14">8月30日</text><text x="40" y="566" class="s" font-size="13">84.2 cm　72.8 kg</text></g>
+  <rect x="22" y="603" width="276" height="18" rx="9" fill="#e7eff9"/><rect x="22" y="603" width="185" height="18" rx="9" fill="url(#cta)"/>
+</g>
+<text x="1235" y="885" class="jp h" font-size="21">04 履歴・分析</text><text x="1235" y="913" class="jp s" font-size="15">数値と3DのBefore / After。</text>
+
+<text x="800" y="963" text-anchor="middle" class="jp s" font-size="18">PRIVACY FIRST · ON-DEVICE LiDAR · SWIFTUI · SWIFTDATA · METAL</text>
+</svg>

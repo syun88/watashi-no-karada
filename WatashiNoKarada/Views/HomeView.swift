@@ -44,7 +44,7 @@ struct HomeView: View {
                 let diff = latest.waistCM - previous.waistCM
                 Text(String(format: "前回比 %+.1f cm", diff))
                     .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(diff <= 0 ? .appTeal : .orange)
+                    .foregroundStyle(diff <= 0 ? Color.appTeal : Color.orange)
             } else {
                 Text("最初のLiDARスキャンを記録しましょう")
                     .font(.subheadline)

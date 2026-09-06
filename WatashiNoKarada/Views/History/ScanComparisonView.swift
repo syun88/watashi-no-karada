@@ -63,7 +63,7 @@ struct ScanComparisonView: View {
             Text(String(format: "%.1f cm", new)).font(.title3.bold()).monospacedDigit()
             Text(String(format: "%+.1f cm", diff))
                 .font(.caption.bold())
-                .foregroundStyle(diff <= 0 ? .appTeal : .orange)
+                .foregroundStyle(diff <= 0 ? Color.appTeal : Color.orange)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()

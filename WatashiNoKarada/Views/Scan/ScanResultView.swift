@@ -10,7 +10,7 @@ struct ScanResultView: View {
             VStack(spacing: 18) {
                 VStack(spacing: 5) {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.system(size: 44)).foregroundStyle(.appTeal)
+                        .font(.system(size: 44)).foregroundStyle(Color.appTeal)
                     Text("スキャン完了").font(.title2.bold())
                     Text("端末内で4方向の深度を統合しました")
                         .font(.caption).foregroundStyle(.secondary)

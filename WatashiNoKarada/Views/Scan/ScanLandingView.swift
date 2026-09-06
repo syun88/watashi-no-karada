@@ -55,7 +55,7 @@ struct ScanLandingView: View {
                 .font(.headline.bold())
                 .foregroundStyle(.white)
                 .frame(width: 34, height: 34)
-                .background(.appBlue, in: Circle())
+                .background(Color.appBlue, in: Circle())
             VStack(alignment: .leading, spacing: 3) {
                 Text(title).font(.headline)
                 Text(text).font(.caption).foregroundStyle(.secondary)

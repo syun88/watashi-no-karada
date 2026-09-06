@@ -10,7 +10,7 @@ struct MetricCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: systemImage)
-                    .foregroundStyle(.appBlue)
+                    .foregroundStyle(Color.appBlue)
                 Text(title)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -22,7 +22,7 @@ struct MetricCard: View {
             if let footnote {
                 Text(footnote)
                     .font(.caption2)
-                    .foregroundStyle(.appTeal)
+                    .foregroundStyle(Color.appTeal)
             }
         }
         .padding(14)

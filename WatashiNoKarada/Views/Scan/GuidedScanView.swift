@@ -89,7 +89,7 @@ struct GuidedScanView: View {
     private var bottomCard: some View {
         VStack(spacing: 14) {
             ProgressView(value: controller.progress)
-                .tint(.appTeal)
+                .tint(Color.appTeal)
             HStack {
                 Label("\(controller.captures.count) / 4", systemImage: "circle.grid.2x2.fill")
                 Spacer()
@@ -105,13 +105,13 @@ struct GuidedScanView: View {
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 14)
                     .foregroundStyle(.white)
-                    .background(.appBlue, in: RoundedRectangle(cornerRadius: 16))
+                    .background(Color.appBlue, in: RoundedRectangle(cornerRadius: 16))
             } else if case .failed = controller.state {
                 Button("再試行") { controller.beginGuidedScan() }
                     .frame(maxWidth: .infinity)
             } else {
                 HStack(spacing: 10) {
-                    Image(systemName: "speaker.wave.2.fill").foregroundStyle(.appBlue)
+                    Image(systemName: "speaker.wave.2.fill").foregroundStyle(Color.appBlue)
                     Text("音声に合わせてゆっくり向きを変えてください")
                         .font(.subheadline.weight(.medium))
                     Spacer()

@@ -29,7 +29,7 @@ struct AppRootView: View {
                 .tabItem { Label("設定", systemImage: "gearshape") }
                 .tag(Tab.settings)
         }
-        .tint(.appBlue)
+        .tint(Color.appBlue)
     }
 }
 

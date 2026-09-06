@@ -70,7 +70,7 @@ struct HomeView: View {
         HStack(spacing: 14) {
             Image(systemName: "sparkles")
                 .font(.title2)
-                .foregroundStyle(.appTeal)
+                .foregroundStyle(Color.appTeal)
             VStack(alignment: .leading, spacing: 4) {
                 Text("見た目だけでなく、同じ条件で比較")
                     .font(.headline)

@@ -1,24 +1,36 @@
 import Foundation
 
 struct MeasurementEngine {
-    /// Uses Ramanujan's second approximation for an ellipse perimeter.
-    /// The front/back width estimates the left-right diameter, and the side views estimate front-back depth.
+    /// Estimates circumference from orthogonal LiDAR silhouettes.
+    ///
+    /// Front/back views estimate the left-right diameter, side views estimate the anterior-posterior
+    /// diameter, and Ramanujan's second approximation converts the fitted ellipse to circumference.
+    /// This is a repeatability-first progress metric, not a medical anthropometric measurement.
     func measurement(from captures: [PoseCapture]) -> ScanMeasurement? {
         guard captures.count >= 4 else { return nil }
 
-        func average(_ poses: [PoseCapture.Pose], _ keyPath: KeyPath<PoseCapture, Float>) -> Double? {
-            let values = captures.filter { poses.contains($0.pose) }.map { Double($0[keyPath: keyPath]) }.filter { $0 > 0.05 }
-            guard !values.isEmpty else { return nil }
-            return values.reduce(0, +) / Double(values.count)
+        func weightedAverage(_ poses: [PoseCapture.Pose], _ keyPath: KeyPath<PoseCapture, Float>) -> Double? {
+            let samples = captures.compactMap { capture -> (value: Double, weight: Double)? in
+                guard poses.contains(capture.pose) else { return nil }
+                let value = Double(capture[keyPath: keyPath])
+                guard value > 0.05 else { return nil }
+                // Keep low-quality frames from dominating while never giving a valid capture zero weight.
+                let weight = max(0.15, Double(capture.confidence))
+                return (value, weight)
+            }
+            guard !samples.isEmpty else { return nil }
+            let totalWeight = samples.reduce(0.0) { $0 + $1.weight }
+            guard totalWeight > 0 else { return nil }
+            return samples.reduce(0.0) { $0 + $1.value * $1.weight } / totalWeight
         }
 
         guard
-            let waistWidth = average([.front, .back], \.widthAtWaistM),
-            let waistDepth = average([.right, .left], \.widthAtWaistM),
-            let abdomenWidth = average([.front, .back], \.widthAtAbdomenM),
-            let abdomenDepth = average([.right, .left], \.widthAtAbdomenM),
-            let hipWidth = average([.front, .back], \.widthAtHipM),
-            let hipDepth = average([.right, .left], \.widthAtHipM)
+            let waistWidth = weightedAverage([.front, .back], \.widthAtWaistM),
+            let waistDepth = weightedAverage([.right, .left], \.widthAtWaistM),
+            let abdomenWidth = weightedAverage([.front, .back], \.widthAtAbdomenM),
+            let abdomenDepth = weightedAverage([.right, .left], \.widthAtAbdomenM),
+            let hipWidth = weightedAverage([.front, .back], \.widthAtHipM),
+            let hipDepth = weightedAverage([.right, .left], \.widthAtHipM)
         else { return nil }
 
         let waist = ellipseCircumference(width: waistWidth, depth: waistDepth) * 100

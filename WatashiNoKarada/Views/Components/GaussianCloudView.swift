@@ -3,6 +3,11 @@ import MetalKit
 import QuartzCore
 import simd
 
+/// Lightweight, depth-initialized isotropic Gaussian splat preview.
+///
+/// This is intentionally not presented as a full optimized 3DGS radiance field: it does not train
+/// anisotropic covariance, SH appearance or opacity from multi-view RGB. LiDAR geometry remains the
+/// dimensional source of truth; this view is only for fast on-device 3D progress visualization.
 struct GaussianCloudView: UIViewRepresentable {
     let points: [CodablePoint]
 
@@ -26,12 +31,14 @@ struct GaussianCloudView: UIViewRepresentable {
         struct GPUPoint {
             var position: SIMD4<Float>
             var color: SIMD4<Float>
+            var sigmaM: Float
+            var padding: SIMD3<Float> = .zero
         }
 
         struct Uniforms {
             var mvp: simd_float4x4
-            var pointSize: Float
-            var pad: SIMD3<Float> = .zero
+            // x = viewport height, y = projection Y scale, z = min point size, w = max point size
+            var splatParams: SIMD4<Float>
         }
 
         private var device: MTLDevice?
@@ -57,11 +64,15 @@ struct GaussianCloudView: UIViewRepresentable {
             descriptor.colorAttachments[0].isBlendingEnabled = true
             descriptor.colorAttachments[0].sourceRGBBlendFactor = .sourceAlpha
             descriptor.colorAttachments[0].destinationRGBBlendFactor = .oneMinusSourceAlpha
+            descriptor.colorAttachments[0].sourceAlphaBlendFactor = .one
+            descriptor.colorAttachments[0].destinationAlphaBlendFactor = .oneMinusSourceAlpha
             descriptor.depthAttachmentPixelFormat = view.depthStencilPixelFormat
             pipeline = try? device.makeRenderPipelineState(descriptor: descriptor)
 
             let depth = MTLDepthStencilDescriptor()
-            depth.isDepthWriteEnabled = false
+            // For a body-surface preview, a depth buffer is more stable than unsorted alpha-only points.
+            // Full 3DGS would instead use visibility-aware depth ordering / compositing.
+            depth.isDepthWriteEnabled = true
             depth.depthCompareFunction = .lessEqual
             depthState = device.makeDepthStencilState(descriptor: depth)
             view.delegate = self
@@ -80,13 +91,21 @@ struct GaussianCloudView: UIViewRepresentable {
             let step = max(1, source.count / 28000)
             let gpu: [GPUPoint] = stride(from: 0, to: source.count, by: step).map { idx in
                 let p = source[idx]
-                return GPUPoint(position: SIMD4(p.x, p.y, p.z, 1), color: p.color)
+                return GPUPoint(
+                    position: SIMD4(p.x, p.y, p.z, 1),
+                    color: p.color,
+                    sigmaM: max(p.effectiveSigmaM, 0.0015)
+                )
             }
             pointCount = gpu.count
             if gpu.isEmpty {
                 pointBuffer = nil
             } else {
-                pointBuffer = device.makeBuffer(bytes: gpu, length: gpu.count * MemoryLayout<GPUPoint>.stride, options: .storageModeShared)
+                pointBuffer = device.makeBuffer(
+                    bytes: gpu,
+                    length: gpu.count * MemoryLayout<GPUPoint>.stride,
+                    options: .storageModeShared
+                )
             }
         }
 
@@ -107,8 +126,17 @@ struct GaussianCloudView: UIViewRepresentable {
             let projection = Self.perspective(fovy: 55 * .pi / 180, aspect: aspect, near: 0.01, far: 20)
             let viewM = Self.translation(SIMD3(0, -0.05, -2.15))
             let rotation = Self.rotationY(t * 0.20)
-            let model = Self.scale(1.55)
-            var uniforms = Uniforms(mvp: projection * viewM * rotation * model, pointSize: 6.5)
+            let modelScale: Float = 1.55
+            let model = Self.scale(modelScale)
+            var uniforms = Uniforms(
+                mvp: projection * viewM * rotation * model,
+                splatParams: SIMD4(
+                    Float(max(view.drawableSize.height, 1)) * modelScale,
+                    projection.columns.1.y,
+                    2.0,
+                    18.0
+                )
+            )
 
             encoder.setRenderPipelineState(pipeline)
             encoder.setDepthStencilState(depthState)

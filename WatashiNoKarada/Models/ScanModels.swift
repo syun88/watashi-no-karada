@@ -9,9 +9,24 @@ struct CodablePoint: Codable, Hashable {
     var g: Float
     var b: Float
     var a: Float
+    /// Metric isotropic Gaussian sigma used by the on-device splat preview.
+    /// Optional so archives created by older app versions remain decodable.
+    var sigmaM: Float? = nil
+
+    init(x: Float, y: Float, z: Float, r: Float, g: Float, b: Float, a: Float, sigmaM: Float? = nil) {
+        self.x = x
+        self.y = y
+        self.z = z
+        self.r = r
+        self.g = g
+        self.b = b
+        self.a = a
+        self.sigmaM = sigmaM
+    }
 
     var position: SIMD3<Float> { SIMD3(x, y, z) }
     var color: SIMD4<Float> { SIMD4(r, g, b, a) }
+    var effectiveSigmaM: Float { sigmaM ?? 0.006 }
 }
 
 struct PoseCapture: Codable, Identifiable {

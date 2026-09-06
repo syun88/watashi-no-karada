@@ -20,7 +20,7 @@ struct SettingsView: View {
             }
             Section {
                 HStack { Text("Version"); Spacer(); Text("0.1.0 MVP").foregroundStyle(.secondary) }
-                HStack { Text("Design & concept"); Spacer(); Text("syun × OpenAI").foregroundStyle(.secondary) }
+                HStack { Text("Created by"); Spacer(); Text("SYUN").foregroundStyle(.secondary) }
             }
         }
         .navigationTitle("設定")

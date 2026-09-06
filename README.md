@@ -3,7 +3,7 @@
 > メジャーや第三者撮影に頼らず、iPhone LiDARで「体の変化」をできるだけ同じ条件で記録するための、ダイエット / 筋トレ向けセルフ記録アプリ。
 
 <p align="center">
-  <img src="Docs/app-icon-first-image.jpg" width="320" alt="わたしのカラダ app icon concept">
+  <img src="Docs/readme-hero.png" width="100%" alt="わたしのカラダ — LiDAR Body Progress Tracker">
 </p>
 
 ## 目的
@@ -29,8 +29,8 @@
 
 ![UI concept](Docs/ui-concept.svg)
 
+- [README hero](Docs/readme-hero.png)
 - [UI design board](Docs/ui-concept.svg)
-- [App icon concept](Docs/app-icon-first-image.jpg)
 - iPhone / App Store用AppIconは `WatashiNoKarada/Resources/Assets.xcassets/AppIcon.appiconset/` に収録
 
 ## 3D Gaussian Splattingについて — 技術的に重要
